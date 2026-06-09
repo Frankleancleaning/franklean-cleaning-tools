@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Franklean Cleaning Quote Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app">
+      <section class="intro">
+        <div class="brand-mark" aria-hidden="true">F</div>
+        <div>
+          <p class="eyebrow">Brisbane bond cleaning estimates</p>
+          <h1>Franklean Cleaning Quote Calculator</h1>
+          <p class="lead">
+            Estimate a starting price for bond cleaning, carpet steam cleaning, and pest control.
+          </p>
+        </div>
+      </section>
+
+      <section class="calculator" aria-label="Quote calculator">
+        <form class="form" id="quoteForm">
+          <label>
+            Property type
+            <select id="propertyType">
+              <option value="unit">Unit / apartment</option>
+              <option value="townhouse">Townhouse</option>
+              <option value="house">House</option>
+            </select>
+          </label>
+
+          <div class="grid">
+            <label>
+              Bedrooms
+              <select id="bedrooms">
+                <option value="1">1 bedroom</option>
+                <option value="2" selected>2 bedrooms</option>
+                <option value="3">3 bedrooms</option>
+                <option value="4">4 bedrooms</option>
+                <option value="5">5 bedrooms</option>
+              </select>
+            </label>
+
+            <label>
+              Bathrooms
+              <select id="bathrooms">
+                <option value="1" selected>1 bathroom</option>
+                <option value="2">2 bathrooms</option>
+                <option value="3">3 bathrooms</option>
+                <option value="4">4 bathrooms</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Carpet steam cleaning
+            <select id="carpetRooms">
+              <option value="0" selected>No carpet cleaning</option>
+              <option value="1">1 room</option>
+              <option value="2">2 rooms</option>
+              <option value="3">3 rooms</option>
+              <option value="4">4 rooms</option>
+              <option value="5">5 rooms</option>
+            </select>
+          </label>
+
+          <label>
+            Pest control
+            <select id="pestControl">
+              <option value="no" selected>Not required</option>
+              <option value="yes">Required</option>
+            </select>
+          </label>
+
+          <div class="grid">
+            <label>
+              Wall condition
+              <select id="wallCondition">
+                <option value="standard" selected>Standard marks</option>
+                <option value="light">Extra spot cleaning</option>
+                <option value="heavy">Heavy marks</option>
+              </select>
+            </label>
+
+            <label>
+              Oven condition
+              <select id="ovenCondition">
+                <option value="standard" selected>Standard</option>
+                <option value="detail">Needs extra detail</option>
+                <option value="heavy">Heavy grease</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="checks">
+            <label class="check">
+              <input type="checkbox" id="petHair">
+              <span>Pet hair present</span>
+            </label>
+
+            <label class="check">
+              <input type="checkbox" id="heavyDust">
+              <span>Heavy dust present</span>
+            </label>
+          </div>
+        </form>
+
+        <aside class="result" aria-live="polite">
+          <p class="result-label">Estimated starting price</p>
+          <p class="price" id="price">$0</p>
+          <p class="summary" id="summary"></p>
+
+          <div class="notice">
+            <strong>Important notice</strong>
+            <p>
+              Prices are starting prices only. Final price must be confirmed after inspection or
+              discussion before cleaning starts.
+            </p>
+          </div>
+
+          <label class="message-label" for="customerMessage">Customer message</label>
+          <textarea id="customerMessage" readonly rows="10"></textarea>
+          <button type="button" id="copyButton">Copy message</button>
+          <p class="copy-status" id="copyStatus" role="status"></p>
+        </aside>
+      </section>
+
+      <section class="terms">
+        <h2>Extra charges and exclusions</h2>
+        <p>
+          Extra charges may apply depending on property condition, including walls, oven, rangehood,
+          windows, tracks, shower screens, pet hair, mould, heavy dust, and additional requests.
+        </p>
+        <p>
+          Blinds, curtains, ceilings, rubbish removal, and non-standard cleaning are excluded unless
+          agreed separately.
+        </p>
+      </section>
+
+      <section class="email-tool" aria-label="Confirmation email generator">
+        <div class="section-heading">
+          <p class="eyebrow">Booking confirmation</p>
+          <h2>Confirmation Email Generator</h2>
+        </div>
+
+        <div class="generator">
+          <form class="form" id="confirmationForm">
+            <div class="grid">
+              <label>
+                Customer name
+                <input type="text" id="customerName" placeholder="e.g. Sarah">
+              </label>
+
+              <label>
+                Starting price
+                <input type="number" id="startingPrice" min="0" step="1" placeholder="e.g. 650">
+              </label>
+            </div>
+
+            <label>
+              Property address
+              <input type="text" id="propertyAddress" placeholder="Street address, suburb">
+            </label>
+
+            <div class="grid">
+              <label>
+                Cleaning date
+                <input type="date" id="cleaningDate">
+              </label>
+
+              <label>
+                Start time
+                <input type="time" id="startTime">
+              </label>
+            </div>
+
+            <label>
+              Deposit required
+              <select id="depositRequired">
+                <option value="no" selected>No</option>
+                <option value="yes">Yes</option>
+              </select>
+            </label>
+
+            <label>
+              Payment condition
+              <input
+                type="text"
+                id="paymentCondition"
+                value="Bank transfer, cash, or card as agreed."
+              >
+            </label>
+
+            <label>
+              Extra charge notice
+              <textarea id="extraChargeNotice" rows="4">Extra charges may apply depending on property condition.</textarea>
+            </label>
+          </form>
+
+          <aside class="result">
+            <label class="message-label" for="confirmationEmail">Confirmation email</label>
+            <textarea id="confirmationEmail" readonly rows="14"></textarea>
+            <button type="button" class="copy-result" data-copy-target="confirmationEmail" data-status-target="emailCopyStatus">
+              Copy email
+            </button>
+            <p class="copy-status" id="emailCopyStatus" role="status"></p>
+
+            <label class="message-label message-gap" for="smsMessage">Short SMS version</label>
+            <textarea id="smsMessage" readonly rows="6"></textarea>
+            <button type="button" class="copy-result" data-copy-target="smsMessage" data-status-target="smsCopyStatus">
+              Copy SMS
+            </button>
+            <p class="copy-status" id="smsCopyStatus" role="status"></p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
